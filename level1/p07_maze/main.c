@@ -12,7 +12,7 @@
 #define PLAYER 'P'
 #define EXIT 'E'
 
-char maze[HEIGHT][WIDTH] = {
+char map[HEIGHT][WIDTH] = {
     "###############",
     "#P            #",
     "### ###  ######",
@@ -66,7 +66,7 @@ void displayMaze() {
     system("cls");
     for(int i = 0; i < HEIGHT; i++) {
         for(int j = 0; j < WIDTH; j++) {
-            printf("%c", maze[i][j]);
+            printf("%c", map[i][j]);
         }
         printf("\n");
     }
@@ -78,12 +78,12 @@ int movePlayer(int dx, int dy) {
     int newY = playerY + dy;
 
     // 检查是否可以移动（不是墙壁）
-    if(maze[newY][newX] != WALL) {
+    if(map[newY][newX] != WALL) {
         // 更新玩家位置
-        maze[playerY][playerX] = PATH;
+        map[playerY][playerX] = PATH;
         playerX = newX;
         playerY = newY;
-        maze[playerY][playerX] = PLAYER;
+        map[playerY][playerX] = PLAYER;
 
         // 检查是否到达出口
         if(playerX == exitX && playerY == exitY) {
